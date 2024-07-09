@@ -9,6 +9,7 @@
             margin:0;
             font-size: 12px
         }
+        body{ max-width: 500px; }
         div, p, li, a, span{
             font-size: 1.25rem;
         }
@@ -18,21 +19,119 @@
         p, h1, h2, h3, h4, h5, h6{
             padding: 0 0.25rem 0 0.5rem;
         }
-
+        button{
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
         header{
             position: absolute;
         }
         header.main{
             background-image: url('./g/bg/67-from-jacuzzi.jpg');
             background-size: cover;
-            background-positions: center;
+            background-position: center;
             background-repeat: no-repeat;
             height: 200px;
             min-height: 200px;
             margin:0 -1.75rem -0.8rem -1.75rem;
             position: relative;
         }
+        section {
+            position: relative;
+            height: 8.0em;
+            overflow: hidden;
+            bottom:0;
+            outline: 0px solid red;
+            margin-top:-1rem
+        }
+
+        section::after {
+            content: "";
+            position: absolute;
+            bottom: 0em;
+            left: 0;
+            width: 100%;
+            height: 8.0rem;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+            pointer-events: none;
+        }
+        section.expanded {
+            height: auto;
+            overflow: visible;
+        }
+        button.expanded span,
+        button span.expanded,
+        button.expanded object,
+        button object.expanded,
+        h2 object.expanded,
+        h2.expanded object{
+            display: none;
+        }
+        button.expanded span.expanded,
+        button.expanded object.expanded,
+        h2.expanded object.expanded{
+            display: inline;
+        }
+        section.expanded::after {
+            display: none;
+        }
+        section{
+            margin-bottom: 4rem;
+        }
+        .section-footer button{
+            margin: 0 auto;
+        }
+        button, svg{
+            cursor: pointer;
+        }
+        h2{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        /* h2 button{
+            float: right
+        } */
+        button.section-toggle-bottom{
+            position: relative;
+            top: -1.25rem;
+            left: calc(50% - 2.5rem);
+        }
+        button.start-as-hidden{
+            display: none;
+        }
+        button.start-as-hidden.expanded{
+            display: flex;
+        }
     </style>
+    <script type="text/javascript">
+        function toggleSection(containerId, btn) {
+            
+            var container = document.getElementById(containerId);
+            //var button = container.querySelector('.show-more-btn');
+            
+            container.classList.toggle('expanded');
+            if(btn){
+                //btn.classList.toggle('expanded');
+                var btnBottom = document.getElementById('toggle-at-bottom-' + containerId);
+                if(btnBottom){
+                    btnBottom.classList.toggle('expanded');
+                }
+            }
+            var header = document.getElementById('header-' + containerId);
+            if(header){
+                header.scrollIntoView();
+            }
+        }
+        function showAll(){
+            document.querySelectorAll('section').forEach(function(section){
+                section.classList.add('expanded');
+            });
+            return false;
+        }
+    </script>
 </head>
 <body>
     <header class="main">
@@ -40,70 +139,35 @@
 <h1>Velkommen!</h1>
 
 <p>Så hyggelig at du leser dette, det betyr at du har sjekket inn :-)</p>
-<p>Her kommer finner du diverse praktisk info.</p>
+<p>Her finner du diverse praktisk info.<br/>
+(Klikk på overskriftene for å se mer, eller <a href="#se-alt" onclick="return showAll();">vis alt med en gang</a>.)</p>
 
-<h2 class="section-title" data-section="jacuzzi">Bruk av Jacuzzi</h2>
-<section id="jacuzzi">
-<ul>
-    <li>Det er viktig å <strong>dusje</strong> av seg før dere bader i jacuzzien.
-        <ul><li>Hår, svette, sminke, såperester, solkrem etc. er dårlig for vann og filtre.</li></ul>
-    </li>
-    <li>Lokket, pleier vi å sette stående på den siden det enten blåser fra eller for å skjerme ev. innsyn, oftest står det som på bildet.
-        <br/>
-        <img src="g/jacuzzilokk-nabo.png" width="200" alt="Jacuzzi med lokket stående, litt lent mt jacuzzi, på siden mot naboen." />
-    </li>
-    <li>Er det behov for å stille temperaturen gjøres det ved å trykke å "Tmp"-knappen.<br/>
-        Første trykk viser nåværende innstilling.<br/>
-        Hvert nye trykk vil endre temperaturen med 0,5 grader.<br/>
-        Velg "Light"-knappen for å "lagre" temperaturen (eller ikke gjør noen ting, så velges også valgt temperatur).<br/>
-        <ul><li>Hver gang man har lagret og trykker "Tmp" på nytt (etter at det har sluttet å blinke), så byttes det om å øke eller senke temperaturen.</li></ul>
-        <br/>
-    </li>
-    <li>Legg på lokket mellom hvert bad.</li>
-    <li><strong>Inne</strong>: Unngå våt parkett etter bading/dusjing, går du våt gjennom hytten kan gamle håndklær som ligger i skuffen på badet legges/benyttes på gulvet, bare unngå at det ligger vann som lager merker på tregulvet.
-        <br/><br/>
-    </li>
-
-    <li>Det er klor i vannet. Man kan lese mye om hvordan lage det perfekte spa-vann, men kortversjonen basert på erfaring er:
-    <li>Når man er ferdig for dagen, eller det er en stund (flere timer) til neste bad:
-        <ol>
-            <li>Bland 1 ts klor ut i vannet, sånn, ferdig.<br/>
-                Det er likevel litt mer å vite :-)<br/>
-                Det gjøres ved å først løse det opp i vann, bruk litermålet som står sammen med “Klor starter” boksen.</li>
-            <li>Begynn med vann i litermålet, deretter klor, rør rundt til mesteparten er løst opp.</li>
-            <li>Hell så klorvannet rundt langs kanten av badet eller nær inntaket til filterne.</li>
-            <li>Skulle vannet være synlig redusert i kvalitet, benytt i stedet: 2 ts klor.<br/>
-                + 1 ts “Klar pool” (tilsettes direkte i badet).<br/>
-                (“Klar pool” trenger litt tid på å virke sammen med filterene og bør få "arbeide" til neste dag før man bader..)</li>
-            <li>La alle de tre boblene kjøre i 5 min, gjerne/helst med lokket delvis på.<br/>
-                (Selv legger jeg lokket helt over men lar det hvile på litermålet slik at det kommer godt med luft inn)
-                <br/><br/>
-            </li>
-            <li>P.S. Det finnes også "pH-strips" samt "ph-pluss"-pulver for å justere pH-verdien som bør ligge mellom 7,0 og 7,4.<br/>
-                (pH-verdien er viktig for at kloret skal virke optimalt og for å unngå hudirritasjoner).<br/>
-                Vi har aldri hatt behov for å justere ned pH-verdien, kun opp, derfor er bare "pluss"-versjonen tilgjengelig.<br/>
-                Trenger man å justere pH-verdien, så tar det ofte litt tid og det er viktig å ikke ta for mye "pluss" oppi.<br/>
-                Ikke benytt mer enn 1 t-skje av gangen, det kan tilsettes rett i basenget uten å blandes ut på forhånd, men man må så la vannet blandes godt før man måler på nytt.<br/>
-                Tips: Første dag på hytta når et ev. bad er ferdig: Mål pH, er den under 7,0, tilsett 1 t-skje "pluss" (direkte) + klor (utvannet) som nevnt ovenfor, så er det tipp topp neste morgen.
-            </li>
-        </ol>
-    </li>
-</ul>
-</section>
-
-<h2 class="section-title" data-section="outdoorsarea">Uteområdet</h2>
+<h2 class="section-title" id="header-outdoorsarea" onclick="return toggleSection('outdoorsarea', this);">
+    <object data="./g/expand_all.svg" type="image/svg+xml"></object>
+    Uteområdet
+</h2>
 <section id="outdoorsarea">
-<p>Alle utemøbler unntatt svart solstol står inne når dere ankommer.</p>
-<p>Det er fritt frem å sette ut det dere ønsker av utemøbler, de kan stå ute under hele oppholdet deres.</p>
-<p>De kan selvsagt også settes inn igjen; hvis de er helt tørre.</p>
-<p>Puter tas alltid inn om kveld/natt for å unngå kondens, eller om det begynner å regne.</p>
+    <p>Alle utemøbler unntatt svart solstol står inne når dere ankommer.</p>
+    <p>Det er fritt frem å sette ut det dere ønsker av utemøbler, de kan stå ute under hele oppholdet deres.</p>
+    <p>De kan selvsagt også settes inn igjen :-) hvis de er helt tørre.</p>
+    <p>Puter tas alltid inn om kveld/natt for å unngå kondens, eller om det begynner å regne.</p>
 
-<p>Nettet på utsiden av platting ved jacuzzi er til å slappe av i, gjerne med tepper og puter om man vil. Det er tiltenkt barn, maks 70 kg i nettet av gangen og ingen hopping! =)</p>
-<p><b>Skråningen</b> som er dekket av svart plast skal ikke gås på, da kan plasten løsne.<br/>
-    Hvis man mister en fotball eller annet ned skråningen må man altså gå ned og opp på utsiden av plasten.</p>
+    <p>Nettet på utsiden av platting ved jacuzzi er til å slappe av i, gjerne med tepper og puter om man vil. Det er tiltenkt barn, maks 70 kg i nettet av gangen og ingen hopping! =)</p>
+    <p><b>Skråningen</b> som er dekket av svart plast skal ikke gås på, da kan plasten løsne.<br/>
+        Hvis man mister en fotball eller annet ned skråningen må man altså gå ned og opp på utsiden av plasten.<br/>
+        (Det skjer ganske ofte for vår del.)</p>
+    <div class="section-footer">
+        <button class="start-as-hidden" id="toggle-at-bottom-outdoorsarea" onclick="return toggleSection('outdoorsarea', this);">
+            <object data="./g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+            <span class="expanded">Skjul innholdet</span>
+        </button>
+    </div>
 </section>
 
-<h2 class="section-title" data-section="playtime">Ting å leke/gjøre</h2>
+<h2 class="section-title" data-section="playtime" onclick="return toggleSection('playtime', this);">
+    <object data="./g/expand_all.svg" type="image/svg+xml"></object>
+    Ting å leke/gjøre
+</h2>
 <section id="playtime">
 <ul>
     <li>Badminton (har vi oftest spilt på veien)</li>
@@ -115,9 +179,18 @@
     <li>Fly med drage</li>
     <li>I hylleseksjonen bak sofa er det noen spill.</li>
 </ul>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-playtime" onclick="return toggleSection('playtime', this);">
+        <object data="./g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Skjul innholdet</span>
+    </button>
+</div>
 </section>
 
-<h2 class="section-title" data-section="indoors">Inne i hytta</h2>
+<h2 class="section-title" data-section="indoors" onclick="return toggleSection('indoors', this);">
+    <object data="./g/expand_all.svg" type="image/svg+xml"></object>
+    Inne i hytta
+</h2>
 <section id="indoors">
 <ol>
     <li>Kjøkkenet mangler "splash wall" bak vask og koketopp,
@@ -136,9 +209,79 @@
         Hvis dette gjøres kan den bare stå slik når dere forlater hytta.
     </li>
 </ol>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-indoors" onclick="return toggleSection('indoors', this);">
+        <object data="./g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Skjul innholdet</span>
+    </button>
+</div>
+
 </section>
 
-<h2 class="section-title" data-section="beforeleaving">Før dere forlater hytten</h2>
+<h2 class="section-title" id="header-jacuzzi"  onclick="return toggleSection('jacuzzi', this);">
+    <object data="./g/expand_all.svg" type="image/svg+xml"></object>
+    <object data="./g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+    Bruk av Jacuzzi
+</h2>
+<section id="jacuzzi">
+<ul>
+<li>Det er viktig å <strong>dusje</strong> av seg før dere bader i jacuzzien.
+    <ul><li>Hår, svette, sminke, såperester, solkrem etc. er dårlig for vann og filtre.</li></ul>
+</li>
+<li>Lokket, pleier vi å sette stående på den siden det enten blåser fra eller for å skjerme ev. innsyn, oftest står det som på bildet.
+    <br/>
+    <img src="g/jacuzzilokk-nabo.png" width="200" alt="Jacuzzi med lokket stående, litt lent mt jacuzzi, på siden mot naboen." />
+</li>
+<li>Er det behov for å stille temperaturen gjøres det ved å trykke å "Tmp"-knappen.<br/>
+    Første trykk viser nåværende innstilling.<br/>
+    Hvert nye trykk vil endre temperaturen med 0,5 grader.<br/>
+    Velg "Light"-knappen for å "lagre" temperaturen (eller ikke gjør noen ting, så velges også valgt temperatur).<br/>
+    <ul><li>Hver gang man har lagret og trykker "Tmp" på nytt (etter at det har sluttet å blinke), så byttes det om å øke eller senke temperaturen.</li></ul>
+    <br/>
+</li>
+<li>Legg på lokket mellom hvert bad.</li>
+<li><strong>Inne</strong>: Unngå våt parkett etter bading/dusjing, går du våt gjennom hytten kan gamle håndklær som ligger i skuffen på badet legges/benyttes på gulvet, bare unngå at det ligger vann som lager merker på tregulvet.
+    <br/><br/>
+</li>
+
+<li>Det er klor i vannet. Man kan lese mye om hvordan lage det perfekte spa-vann, men kortversjonen basert på erfaring er:
+<li>Når man er ferdig for dagen, eller det er en stund (flere timer) til neste bad:
+    <ol>
+        <li>Bland 1 ts klor ut i vannet, sånn, ferdig.<br/>
+            Det er likevel litt mer å vite :-)<br/>
+            Det gjøres ved å først løse det opp i vann, bruk litermålet som står sammen med “Klor starter” boksen.</li>
+        <li>Begynn med vann i litermålet, deretter klor, rør rundt til mesteparten er løst opp.</li>
+        <li>Hell så klorvannet rundt langs kanten av badet eller nær inntaket til filterne.</li>
+        <li>Skulle vannet være synlig redusert i kvalitet, benytt i stedet: 2 ts klor.<br/>
+            + 1 ts “Klar pool” (tilsettes direkte i badet, ikke i klorløsningen).<br/>
+            (“Klar pool” trenger litt tid på å virke sammen med filterene og bør få "arbeide" til neste dag før man bader..)</li>
+        <li>La alle de tre boblene kjøre i 5 min, gjerne/helst med lokket delvis på.<br/>
+            (Selv legger jeg lokket helt over men lar det hvile på litermålet slik at det kommer godt med luft inn)
+            <br/><br/>
+        </li>
+        <li>P.S. Det finnes også "pH-strips" samt "ph-pluss"-pulver for å justere pH-verdien som bør ligge mellom 7,0 og 7,4.<br/>
+            (pH-verdien er viktig for at kloret skal virke optimalt og for å unngå hudirritasjoner).<br/>
+            Vi har aldri hatt behov for å justere ned pH-verdien, kun opp, derfor er bare "pluss"-versjonen tilgjengelig.<br/>
+            Trenger man å justere pH-verdien, så tar det ofte litt tid og det er viktig å ikke ta for mye "pluss" oppi, da trenger man plutselig "minus".<br/>
+            1 t-skje er det vi pleier å bruke, ikke bruk mer enn det av gangen, det tilsettes rett i basenget uten å blandes ut på forhånd, men man må så la vannet blandes godt før man måler på nytt.<br/>
+            Tips: Første dag på hytta når et ev. bad er ferdig: Mål pH, er den under 7,0, tilsett 1 t-skje med "pluss" (direkte i badet) + klor (utvannet) som nevnt ovenfor, så er det tipp topp neste morgen.
+        </li>
+    </ol>
+</li>
+</ul>
+<div class="section-footer">
+<button class="start-as-hidden" id="toggle-at-bottom-jacuzzi" onclick="return toggleSection('jacuzzi', this);">
+    <object data="./g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+    <span class="expanded">Skjul innholdet</span>
+</button>
+</div>
+</section>
+
+
+<h2 class="section-title" data-section="beforeleaving" onclick="return toggleSection('beforeleaving', this);">
+    <object data="./g/expand_all.svg" type="image/svg+xml"></object>
+    Før dere forlater hytta
+</h2>
 <section id="beforeleaving">
 <ul>
     <li>Lukk alle 3 vinduer</li>
@@ -157,9 +300,19 @@
     <li>Lås ytterdør og legg nøkkel tilbake i nøkkelboks</li>
     <li>God tur hjem! :-)</li>
 </ul>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-beforeleaving" onclick="return toggleSection('beforeleaving', this);">
+        <object data="./g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Skjul innholdet</span>
+    </button>
+</div>
+
 </section>
 
-<h2 class="section-title" data-section="tovisit">Steder å besøke</h2>
+<h2 class="section-title" data-section="tovisit" onclick="return toggleSection('tovisit', this);">
+    <object data="./g/expand_all.svg" type="image/svg+xml"></object>
+    Steder å besøke
+</h2>
 <section id="tovisit">
 <ul>
     <li>Nabostranden (Daskerudstranda)</li>
@@ -175,6 +328,13 @@
     <li>Nes kirkeruiner (6,6km)</li>
     <li>Golfbaner. Nes Golfklubb eller Lily country club</li>
 </ul>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-tovisit" onclick="return toggleSection('tovisit', this);">
+        <object data="./g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Skjul innholdet</span>
+    </button>
+</div>
+
 </section>
 
 </body>
