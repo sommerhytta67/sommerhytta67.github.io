@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Cabin 67 at Nes Strandhager</title>
+    <style type="text/css">
+        body,html{
+            margin:0;
+            font-size: 12px
+        }
+        body{ max-width: 500px; }
+        div, p, li, a, span{
+            font-size: 1.25rem;
+        }
+        p{
+            margin: 1rem 0;
+        }
+        p, h1, h2, h3, h4, h5, h6{
+            padding: 0 0.25rem 0 0.5rem;
+        }
+        button{
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+        header{
+            position: absolute;
+        }
+        header.main{
+            background-image: url('./g/bg/67-from-jacuzzi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 200px;
+            min-height: 200px;
+            margin:0 -1.75rem -0.8rem -1.75rem;
+            position: relative;
+        }
+        section {
+            position: relative;
+            height: 8.0em;
+            overflow: hidden;
+            bottom:0;
+            outline: 0px solid red;
+            margin-top:-1rem
+        }
+
+        section::after {
+            content: "";
+            position: absolute;
+            bottom: 0em;
+            left: 0;
+            width: 100%;
+            height: 8.0rem;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+            pointer-events: none;
+        }
+        section.expanded {
+            height: auto;
+            overflow: visible;
+        }
+        button.expanded span,
+        button span.expanded,
+        button.expanded object,
+        button object.expanded,
+        h2 object.expanded,
+        h2.expanded object{
+            display: none;
+        }
+        button.expanded span.expanded,
+        button.expanded object.expanded,
+        h2.expanded object.expanded{
+            display: inline;
+        }
+        section.expanded::after {
+            display: none;
+        }
+        section{
+            margin-bottom: 4rem;
+        }
+        .section-footer button{
+            margin: 0 auto;
+        }
+        button, svg{
+            cursor: pointer;
+        }
+        h2{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        /* h2 button{
+            float: right
+        } */
+        button.section-toggle-bottom{
+            position: relative;
+            top: -1.25rem;
+            left: calc(50% - 2.5rem);
+        }
+        button.start-as-hidden{
+            display: none;
+        }
+        button.start-as-hidden.expanded{
+            display: flex;
+        }
+    </style>
+    <script type="text/javascript">
+        function toggleSection(containerId, btn) {
+            
+            var container = document.getElementById(containerId);
+            //var button = container.querySelector('.show-more-btn');
+            
+            container.classList.toggle('expanded');
+            if(btn){
+                //btn.classList.toggle('expanded');
+                var btnBottom = document.getElementById('toggle-at-bottom-' + containerId);
+                if(btnBottom){
+                    btnBottom.classList.toggle('expanded');
+                }
+            }
+            var header = document.getElementById('header-' + containerId);
+            if(header){
+                header.scrollIntoView();
+            }
+        }
+        function showAll(){
+            document.querySelectorAll('section').forEach(function(section){
+                section.classList.add('expanded');
+            });
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <header class="main">
+    </header>
+<h1>Welcome!</h1>
+
+<!-- TODO: WATER TAP + Grill/fireplace(?) -->
+
+<p>We're happy you're reading this, it means you have checked in :-)</p>
+<p>Here you will find various practical information.<br/>
+(Click on the headlines to see more, or <a href="#se-alt" onclick="return showAll();">show everything at once</a>.)</p>
+
+<h2 class="section-title" id="header-outdoorsarea" onclick="return toggleSection('outdoorsarea', this);">
+    Outdoor Area
+    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
+</h2>
+<section id="outdoorsarea">
+    <p>All outdoor furniture except black sun loungers are inside when you arrive.</p>
+    <p>You are free to bring out the outdoor furnitures you want, they can stay outside throughout your stay.</p>
+    <p>Of course, they can also be brought back in :-) if they are completely dry.</p>
+    <p>Cushions are always brought in at night to avoid condensation, or if it starts to rain.
+        In case of rain, the table with a wooden surface should also be brought inside, thank you!</p>
+
+    <p>The net outside the deck by the jacuzzi is for relaxing in, preferably with blankets and pillows if you want.
+        It is intended for children, max 70 kg in the net at a time and <u>no</u> jumping!! =)</p>
+    <p><b>The slope</b> covered with black plastic should not be stepped on, as the plastic can come loose.<br/>
+        If a football or anything else rolls down the slope: You have to walk outside the plastic (on any side you prefer).<br/>
+        (This happens quite often with us, having a 6 year old who likes to play ball.)</p>
+    <p>Fireplace: located behind the cabin, inside tarpaulin under the air conditioner.
+        Use wood, charcoal, briquettes, whatever you want. We usually mix wood, lighter fluid, and briquettes.<br/>
+        The grill grate is in the cushion box, next to the outside water outlet.<br/>
+        Clean the grate afterward.<br/>
+        It can be difficult to get the grate back into the box, it can alternatively just be placed together with / on top of the grill.</p>
+    </p>
+    <p>Water hose: There are 2 outlets, Vault 1 and 2 (right / left), use no. 1, the gray hose.
+        To start the water: Press the button to select "Vault 1", then press the "Man" button. Press "Man" again to stop.
+        Or: contact us.</p>
+    <div class="section-footer">
+        <button class="start-as-hidden" id="toggle-at-bottom-outdoorsarea" onclick="return toggleSection('outdoorsarea', this);">
+            <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+            <span class="expanded">Hide content</span>
+        </button>
+    </div>
+</section>
+
+<h2 class="section-title" data-section="playtime" onclick="return toggleSection('playtime', this);">
+    Things to do / to play with
+    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
+</h2>
+<section id="playtime">
+<div>Check the cushion box by the water tap, the code is 0607.</div>
+<ul>
+    <li>Badminton</li>
+    <li>(Foot)ball</li>
+    <li>Frisbee</li>
+    <li>Target throwing with balls (Velcro balls and collapsible target are on the shelf in the bedroom with the sliding door)</li>
+    <li>Beach toys</li>
+    <li>Flying a kite</li>
+    <li>There are some games on the shelf section behind the sofa.</li>
+    <li>Fishing (Fishing permit here: <a href="https://bit.ly/fiskines">https://bit.ly/fiskines</a>. Rod available.)</li>
+</ul>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-playtime" onclick="return toggleSection('playtime', this);">
+        <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Hide content</span>
+    </button>
+</div>
+</section>
+
+<h2 class="section-title" data-section="indoors" onclick="return toggleSection('indoors', this);">
+    Inside the Cabin
+    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
+</h2>
+<section id="indoors">
+<ol>
+    <li>The kitchen lacks a "splash wall" behind the sink and stovetop,
+        so we currently have a loose glass plate by the stovetop and are generally careful to wipe off
+        any splashes that occur, <b>thank you</b> for doing the same :-)</li>
+    <li>The living room window and bedroom window facing the road are typically open on a summer night,
+        but avoid this if rain is expected, as the rain can come inside.</li>
+    <li>Bedroom 1: Before bedtime, it can be a good idea to open the window and close the door to the room,
+        so that the summer heat from the cabin does not warm up the room, which will cool down a bit in the meantime.</li>
+    <li>Our boy usually sleeps in Bedroom 1 and has on the hottest days benefited from the portable fan
+        (on the shelf in Bedroom 2) which can be plugged into the power inside the technical cabinet on the wall.</li>
+    <li>It is also possible to sleep at the loft, closest to the window there is naturally the most circulation.<br/>
+        Take bedding from another bed.<br/>
+        If, for example, the two people staying in Bedroom 1 each want their own bed / room and one person moves to the loft,
+        then the bed in Bedroom 1 can be converted into a single bed.
+        Simply stack all the mattresses on top of each other, push in the drawers and pretend you are in the fairy tale "the prince(ss) and the pea" :-)<br>
+        If this is done, the bed can just stay like that when you leave the cabin.
+    </li>
+    <li>User manual for the air conditioner <a href="/assets/manual-toshiba-signatur25.pdf" target="_blank">here</a>.<br/>
+        Typical use is to set "Mode" to "A" for automatic cooling/heating based on the selected temperature,
+        and "Fan" to either "Auto" or desired strength, here "Quiet" (the face showing "Shush") can be a good night mode.<br/>
+        (We usually turn it off at night.)
+    </li>
+</ol>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-indoors" onclick="return toggleSection('indoors', this);">
+        <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Hide content</span>
+    </button>
+</div>
+
+</section>
+
+<h2 class="section-title" id="header-jacuzzi"  onclick="return toggleSection('jacuzzi', this);">
+    Using the Jacuzzi
+    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
+</h2>
+<section id="jacuzzi">
+    <ul>
+        <li>It is crucial to the water quality for you all to <strong>shower</strong> before entering the jacuzzi.<br/>
+            Even if you "feel" clean, there are always loose skin particles and residues on the skin that are not good for the water and filters.</li>
+            <ul><li>Hair, sweat, makeup, soap residue, sunscreen, etc. are bad for the water and filters.</li></ul>+
+            <ul><li>We know, it's tempting to skip it, please don't :-)</li></ul>
+        </li>
+
+        <li>Bring a cloth. Upon arrival + occasionally, we usually bring a cloth (not the kitchen cloth),
+            there should be one together with the other jacuzzi items, to wipe along the waterline where things typically settle.<br/>
+            Then the filters should catch until next time.<br/><br/>
+       </li>
+
+       <li>Rinse / wash your feet before getting in.</li>
+        
+        <li>The cover, we usually place standing at an angle on the side either from where the wind blows or as a privacy shield,
+            most often it stands as in the picture.
+            <br/>
+            <img src="/g/jacuzzilokk-nabo.png" width="200" alt="Jacuzzi with the cover standing, slightly leaning against the jacuzzi, on the side facing the neighbor." />
+        </li>
+        <li>If you need to adjust the temperature, do so by pressing the "Tmp" button.<br/>
+            The first press shows the current setting.<br/>
+            Each new press changes the temperature by 0.5 degrees.<br/>
+            Press the "Light" button to "save" the temperature (or do nothing, the selected temperature will also be saved).<br/>
+            <ul><li>Each time you have saved and press "Tmp" again (after it stops blinking), it switches between increasing or decreasing the temperature.</li></ul>
+            <br/>
+        </li>
+        <li>Put the cover on between each use.</li>
+        <li>
+            <ul>
+                <li>Small flies etc. also like to bathe.</li>
+            </ul>
+        </li>
+        <li><strong>Inside</strong>: Keep the wooden floor dry after bathing/showering, if you walk through the cabin wet, find old towels in the bathroom drawer which can be placed/used on the floor.
+            The point is to avoid leaving water that will stain the wooden floor.
+            <br/><br/>
+        </li>
+        
+        <li><b>There is chlorine in the water.</b> Perfect water is not always easy, many factors are involved, the short version based on experience is:
+            <li>When you are done:
+                <ul>
+                    <li>Add 1 teaspoon of dissolved chlorine to the water. (Use the liter measure.)</li>
+                </ul>
+            </li>
+            <li>After about 3-4 baths (typically every other day +):
+                <ul>
+                    <li>Add 1 small teaspoon of "pH-plus" powder directly to the water.</li>
+                </ul>
+                P.S. Chlorine dissipates over (a short) time, so a little too much is ok, while the pH-level does not decrease by itself.
+                You can either measure or feel the pH; if it gets a bit high, the water can feel soapy and
+                the bubbles do not burst as easy and you will get a kind of foam bath (it is not dangerous).<br/>
+                (and the body waste from those bathing settles on the bubbles and the pool edge instead of in the filter =) )<br/>
+                If you are unsure or think it is a bit too much, use a pH strip and test the water.
+            </li>
+            <li>Every other day (provided you have bathed both days):
+                <ul>
+                    <li>Also add 1 small teaspoon of "Clear pool" directly to the water. (This prevents biofilm in the bath.)</li>
+                </ul>
+                That's it, done.<br/><br/>
+    
+                There is still a bit more to know :-)
+            </li>       
+            <li>The chlorine should be dissolved before it is poured into the water,
+                we use the liter-measure that is together with the jacuzzi items (at the bottom of the gray shelf by the entrance door).</li>
+            <li>Start with water in the liter measure, preferably take water directly from the jacuzzi,
+                then add the powder, stir until most of it is dissolved.</li>
+            <li>Then pour the chlorine water around the edge of the bath or near the intake of the filters (when the pump is running).</li>
+            <li>If the water quality is visibly reduced, use instead: 2 teaspoons of chlorine.<br/>
+                + consider 1 teaspoon of “Clear pool” (added directly to the bath, not in the chlorine solution).
+            </li>
+            <li>Let all three bubbles run for 8 minutes, preferably with the lid partially on.<br/>
+                (I personally place the lid completely over but let it rest on the liter measure so that plenty of air comes in/out)
+                <br/><br/>
+            </li>
+            <li>P.S. There are also "pH strips" to check the pH value which should be around 7.0.<br/>
+                <!-- (The pH value is important for the chlorine to work optimally and to avoid skin irritation).<br/> -->
+                We have never needed to lower the pH value, only raise it, which is why only the "ph-plus" version is available.<br/>
+                If you want to adjust the pH value, it takes a little time in the sense that the water needs to be well mixed and it is important not to add too much "plus" at once.
+                The pH-scale is not linear and you can quickly add too much.<br/>
+                1 teaspoon or a little less is what we usually use, do not use more than that at a time,
+                it can be added directly to the pool as powder or dissolved,
+                then the water needs to be well mixed before measuring again.<br/>
+                Tip: The first day at the cabin when a bath is done: Measure the pH, if it is below 7.0, add 1 teaspoon of "plus" (directly in the bath) + chlorine (dissolved) as mentioned above, then it will be well mixed by the next morning.
+            </li>
+        </ol>
+    </li>
+    </ul>
+    <div class="section-footer">
+        <button class="start-as-hidden" id="toggle-at-bottom-jacuzzi" onclick="return toggleSection('jacuzzi', this);">
+            <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+            <span class="expanded">Hide content</span>
+        </button>
+    </div>
+</section>
+
+<h2 class="section-title" data-section="beforeleaving" onclick="return toggleSection('beforeleaving', this);">
+    Before you leave the cabin
+    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
+</h2>
+<section id="beforeleaving">
+<ul>
+    <li>Close all 3 windows</li>
+    <li>Ensure that the folding door to the terrace is:
+        <ul>
+            <li>Fully closed.</li>
+            <li>Locked with the key.</li>
+            <li>Locked in the middle by turning the lock handle to the locked position<br/>
+                <img src="/g/terasselas.jpg" alt="The terrace door lock in the mid-position." height="100"><br/>
+                In the picture, we see the lock in the mid-position, it should never be like this,
+                it just illustrates that you pull it towards you and then turn it 180 degrees to open/lock.
+            </li>
+            <li>(if it is not locked, it can be opened by unauthorized persons or strong wind, even if locked with the key.)</li>
+        </ul>
+    </li>
+    <li>Lock the front door and return the key to the key box.</li>
+    <li>Have a safe trip home! :-)</li>
+</ul>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-beforeleaving" onclick="return toggleSection('beforeleaving', this);">
+        <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Hide content</span>
+    </button>
+</div>
+
+</section>
+
+<h2 class="section-title" data-section="tovisit" onclick="return toggleSection('tovisit', this);">
+    Places to visit
+    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
+</h2>
+<section id="tovisit">
+<ul>
+    <li>Neighboring beach (Daskerudstranda)</li>
+    <li>Ancient road: Keep left down by the beach and follow the path past Daskerudstranda, then it goes
+        <ul>
+            <li>past an area with a “(diving)/jumping platform”</li>
+            <li>before arriving at Funnefoss Industrial Worker Museum</li>
+            <li>and then further to the dam.</li>
+        </ul>
+    </li>
+    <li>The camping site: Keep right at the beach. (They have a trampoline :-) )</li>
+    <li>Funnefoss stadium (3km) has artificial grass fields that are often available.</li>
+    <li>Nes church ruins (6.6km)</li>
+    <li>Golf courses. Nes Golf Club or Lily Country Club</li>
+</ul>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-tovisit" onclick="return toggleSection('tovisit', this);">
+        <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Hide content</span>
+    </button>
+</div>
+
+</section>
+
+</body>
+
+</html>
