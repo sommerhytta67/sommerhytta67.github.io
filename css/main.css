@@ -101,3 +101,17 @@ button.start-as-hidden.expanded{
 .text{
     color: inherit;
 }
+.welcomeWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    div{
+        align-items: center;
+        display: flex;
+    }
+    a{
+        display: inline-block;
+        margin-left: 0.5rem;
+    }
+}
