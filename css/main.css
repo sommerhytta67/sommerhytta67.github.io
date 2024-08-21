@@ -84,6 +84,10 @@ h2{
     display: flex;
     align-items: center;
 }
+li>h2.section-title {
+    margin: 0;
+    font-size: inherit;
+}
 /* h2 button{
     float: right
 } */
@@ -92,8 +96,11 @@ button.section-toggle-bottom{
     top: -1.25rem;
     left: calc(50% - 2.5rem);
 }
-button.start-as-hidden{
+.start-as-hidden{
     display: none;
+}
+.start-as-hidden.expanded{
+    display: block;
 }
 button.start-as-hidden.expanded{
     display: flex;
