@@ -4,20 +4,141 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Hytte 67 i Nes Strandhager</title>
-    <link href="/css/main.css" media="all" rel="stylesheet" />
-    <script type="text/javascript" src="/js/main.js"></script>
+    <style type="text/css">
+        body,html{
+            margin:0;
+            font-size: 12px
+        }
+        body{ max-width: 500px; }
+        div, p, li, a, span{
+            font-size: 1.25rem;
+        }
+        p{
+            margin: 1rem 0;
+        }
+        p, h1, h2, h3, h4, h5, h6{
+            padding: 0 0.25rem 0 0.5rem;
+        }
+        button{
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+        header{
+            position: absolute;
+        }
+        header.main{
+            background-image: url('/g/bg/67-from-jacuzzi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 200px;
+            min-height: 200px;
+            margin:0 -1.75rem -0.8rem -1.75rem;
+            position: relative;
+        }
+        section {
+            position: relative;
+            height: 8.0em;
+            overflow: hidden;
+            bottom:0;
+            outline: 0px solid red;
+            margin-top:-1rem
+        }
+
+        section::after {
+            content: "";
+            position: absolute;
+            bottom: 0em;
+            left: 0;
+            width: 100%;
+            height: 8.0rem;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+            pointer-events: none;
+        }
+        section.expanded {
+            height: auto;
+            overflow: visible;
+        }
+        button.expanded span,
+        button span.expanded,
+        button.expanded object,
+        button object.expanded,
+        h2 object.expanded,
+        h2.expanded object{
+            display: none;
+        }
+        button.expanded span.expanded,
+        button.expanded object.expanded,
+        h2.expanded object.expanded{
+            display: inline;
+        }
+        section.expanded::after {
+            display: none;
+        }
+        section{
+            margin-bottom: 4rem;
+        }
+        .section-footer button{
+            margin: 0 auto;
+        }
+        button, svg{
+            cursor: pointer;
+        }
+        h2{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        /* h2 button{
+            float: right
+        } */
+        button.section-toggle-bottom{
+            position: relative;
+            top: -1.25rem;
+            left: calc(50% - 2.5rem);
+        }
+        button.start-as-hidden{
+            display: none;
+        }
+        button.start-as-hidden.expanded{
+            display: flex;
+        }
+    </style>
+    <script type="text/javascript">
+        function toggleSection(containerId, btn) {
+            
+            var container = document.getElementById(containerId);
+            //var button = container.querySelector('.show-more-btn');
+            
+            container.classList.toggle('expanded');
+            if(btn){
+                //btn.classList.toggle('expanded');
+                var btnBottom = document.getElementById('toggle-at-bottom-' + containerId);
+                if(btnBottom){
+                    btnBottom.classList.toggle('expanded');
+                }
+            }
+            var header = document.getElementById('header-' + containerId);
+            if(header){
+                header.scrollIntoView();
+            }
+        }
+        function showAll(){
+            document.querySelectorAll('section').forEach(function(section){
+                section.classList.add('expanded');
+            });
+            return false;
+        }
+    </script>
 </head>
 <body>
     <header class="main">
     </header>
-<div style="display: flex;flex-direction: row;align-items: center;justify-content: space-between;">
-    <h1>Velkommen!</h1>
-    <div><img height="18" src="/g/icon/globe-01.png" alt="Globe, indicating a language selector" /><a href="./en/">Change to english</a></div>
-</div>
-    
+<h1>Velkommen!</h1>
 
-<div style="clear: both;"></div>
-<!-- TODO: VANNKRAN -->
+<!-- TODO: VANNKRAN + Grill/bålplass(?) -->
 
 <p>Så hyggelig at du leser dette, det betyr at du har sjekket inn :-)</p>
 <p>Her finner du diverse praktisk info.<br/>
@@ -38,10 +159,9 @@
     <p><b>Skråningen</b> som er dekket av svart plast skal ikke gås på, da kan plasten løsne.<br/>
         Hvis man mister en fotball eller annet ned skråningen må man altså gå ned og opp på utsiden av plasten.<br/>
         (Det skjer ganske ofte for vår del.)</p>
-    <p>Ildsted: finnes bak hytten, i presenning under varmepumpen. Bruk ved, grillkull, briketter, det man ønsker.
-        Vi blander gjerne ved, tennveske og briketter.<br/>
+    <p>Ildsted: finnes bak hytten, i presenning under varmepumpen. Bruk ved, grillkull, briketter, det man ønsker. Vi blander gjerne ved, tennveske og briketter.<br/>
         Grillrist finnes i putekassen.<br/>
-        Vask risten etterpå (en svamp er ok til dette formålet).<br/>
+        Vask risten etterpå.<br/>
         Det kan være vanskelig å få risten ned i kassen igjen, den kan evt bare legges sammen med / oppå grillen.</p>
     </p>
     <p>Vannslange: Det er 2 utganger, Vault 1 og 2 (høyre  / venstre), benytt nr. 1, den grå slangen. For så starte vannet: Trykk på knappen for å velge "Vault 1", trykk deretter på "Man"-knappen. Trykk en gang til på "Man" for å stoppe. Ev.: ta kontakt.</p>
@@ -58,10 +178,10 @@
     <object data="/g/expand_all.svg" type="image/svg+xml"></object>
 </h2>
 <section id="playtime">
-<div>Se i kassen ved vannkranen, den er enten ulåst eller koden er 0607.</div>
+<div>Se i putekassen ved vannkranen, koden er 0607.</div>
 <ul>
     <li>Badminton</li>
-    <!-- <li>(Fot)ball</li> -->
+    <li>(Fot)ball</li>
     <li>Frisbee</li>
     <li>Kast på blink med baller (borrelås-baller og sammenfoldet blink ligger på hyllen i soverommet med skyvedør)</li>
     <li>Strand-leker</li>
@@ -85,13 +205,12 @@
 <ol>
     <li>Kjøkkenet mangler "splash wall" bak vask og koketopp,
         derfor har vi foreløpig en løs glassplate ved koketoppen og er generelt nøye med å tørke av
-        sprut som kommer, <b>takk</b> for at dere gjør det samme :-)</li>
-    <li>Stuevinduet og soveromsvinduet ut mot veien står typisk åpne en sommernatt,
-        men unngå det om det er ventet regn, det kan nemlig regne inn.</li>
-    <!-- <li>Soverom 1: Før leggetid kan det være lurt å åpne vinduet, samt lukke døren til rommet,
+        sprut som kommer, takk for at dere gjør det samme :-)</li>
+    <li>Stuevinduet og soveromsvinduet ut mot veien står typisk åpne en sommernatt, men unngå det om det er ventet regn, det kan nemlig regne inn.</li>
+    <li>Soverom 1: Før leggetid kan det være lurt å åpne vinduet, samt lukke døren til rommet,
         slik at sommervarmen fra hytta ikke varmer opp rommet som får kjølt seg litt ned i mellomtiden.</li>
     <li>Gutten vår pleier å sove på Soverom 1 og har på de varmeste dagene nytt godt av den bærbare viften
-        (ligger på hyllen i Soverom 2) som kan kobles til strøm inne i det tekniske skapet på veggen.</li> -->
+        (ligger på hyllen i Soverom 2) som kan kobles til strøm inne i det tekniske skapet på veggen.</li>
     <li>Det er også mulig å sove på hemsen, nærmest vinduet er det naturlig mest sirkulasjon.<br/>
         Ta med sengetøy fra en annen seng.<br/>
         Hvis f.eks. de to som bor på Soverom 1 vil ha hver sin seng / sitt rom og den ene da flytter til hemsen,
@@ -120,22 +239,16 @@
 </h2>
 <section id="jacuzzi">
     <ul>
-        <li>Avhengig av hvor nært innsjekking vi sist var på hytten bør klor i vannet sjekkes før man bader,
-            se punktet lenger nede "<a href="#clorine">Det er klor i vannet</a>"</li>
-        <li>Det er essensielt for vannkvaliteten å <strong>dusje</strong> før dere bader i jacuzzien.
-            <ul>
-                <li>Hår, svette, sminke, såperester, solkrem, løse hudpartikler etc. er dårlig for vann og filtre.</li>
-                <li>Takk :-)</li>
-            </ul>
-        </li>
-
         <li>Ta med en klut. Ved annkomst + ellers av og til pleier vi ha med klut (ikke kjøkkenkluten),
             en egen ligger sammen med jacuzzi-tingene, til å tørke langs vannlinjen der typisk ting kan legge seg.<br/>
             Så har filterne tatt det til neste gang.<br/><br/>
+       </li>
+
+       <li>Skyll /vask av føttene før du går oppi.</li>
+
+        <li>Det er viktig å <strong>dusje</strong> av seg før dere bader i jacuzzien.
+            <ul><li>Hår, svette, sminke, såperester, solkrem etc. er dårlig for vann og filtre.</li></ul>
         </li>
-
-        <li>Skyll / vask av føttene før du går oppi vannet.</li>
-
         <li>Lokket, pleier vi å sette stående på skrå på den siden det enten blåser fra eller for å skjerme ev. innsyn,
             oftest står det som på bildet.
             <br/>
@@ -148,113 +261,60 @@
             <ul><li>Hver gang man har lagret og trykker "Tmp" på nytt (etter at det har sluttet å blinke), så byttes det om å øke eller senke temperaturen.</li></ul>
             <br/>
         </li>
-        <li>Når du er ferdig:
+        <li>Legg på lokket mellom hvert bad.</li>
+        <li>
             <ul>
-                <li>Legg på lokket mellom hver bruk.</li>
-                <li>Avhengig av vinden, osv. kan det fort bli en del smårusk (og fluer), bruk da bassenhåven for å fjerne det du kan.<br/>
-                    Du kan finne håven på nederste hylle i soverommet og skaftet bak, som på bildet.<br/>
-                    <img src="/g/pool-net-rake.png" width="200" alt="Viser raken på nederste hylle i soverommet og skaftet bak hyllen." />
-                </li>
+                <li>Småfluer o.l. liker også å bade.</li>
             </ul>
         </li>
-        <li><strong>Inne</strong>: Unngå våt parkett etter dusjing og bading,
-            går du våt gjennom hytten kan gamle håndklær som ligger i skuffen på badet legges/benyttes på gulvet,
-            bare unngå at det ligger vann som lager merker på tregulvet.
+        <li><strong>Inne</strong>: Unngå våt parkett etter bading/dusjing, går du våt gjennom hytten kan gamle håndklær som ligger i skuffen på badet legges/benyttes på gulvet, bare unngå at det ligger vann som lager merker på tregulvet.
             <br/><br/>
         </li>
 
-        <li><b><a name="clorine" class="text">Det er klor i vannet.</a></b>
-            Perfekt vann er ikke alltid så enkelt, mange faktorer.<br/>
-            I løpet av Deres opphold er det kanskje bare klor og 'seaklear' som må tilsettes.<br/>
-            Kortversjonen:
-            <ol>
-                <li>Sjekk at det er klor i flotøren. (se hvordan i listen under)</li>
-                <li>Ser og lukter vannet bra, ta et bad.</li>
-                <li>Etter badet, fjern rusk og rask fra overflaten med håven (se hvor den ligger på bildet lenger nede)</li>
-                <li>Ved 'normal' bruk bør nemlig klortabletten i flotøren være nok og dere trenger ikke tilføre mer de neste to dagene.</li>
-                <li>pH endres ikke veldig mye og godt mulig dette heller ikke trengs å justeres før utsjekking.</li>
-                <li>Hver fjerde dag eller før dere sjekker ut, tilsett 'Seaklear' (se hvordan lenger nede).</li>
-            </ol>
-            Langversjonen:
-            <ol>
-                <li>Sjekk at det er en klortablett i "flotøren".<br/>
-                    (1 tablett pleier å holde i 2-3 dager, litt avhengig av bruk.)<br/><br/>
-                    Dra rolig opp og av dekselet som vist på bildet.<br/>
-                    <img width="200" src="/g/pool-filter-grid-opening.png" alt="Jacuzzi filter deksel, halvveis åpent." />
-                    <b>Merk:</b> Flotøren har en liten (blå) åpning nederst, den må ikke justeres.<br/>
-                    Ta ut og åpne flotøren ved å skru av det store blå lokket, trykk ned og vri.<br/>
-                </li>
-                <li>Dersom det er tomt eller den som er der er nesten ferdig, legg i 1 tablett, se bilder:<br/>
-                    <img width="180" src="/g/pool-clorine-tablet.png" alt="Klortablett på toppen av boksen med tabletter 'LongTab 20'" /><br/>
-                    <img width="180" src="/g/pool-clorine-tablet-in-floater12.png" alt="Klortablett i flotøren" /><br/>
-                </li>
-                <li>
-                    Sett på lokket igjen.<br/>
-                    Legg flotøren inn bak dekselet igjen.<br/>
-                </li>
-                <li>
-                    Skyv dekselet rolig på plass igjen.
-                </li>
-            </ol>
+        <li><b>Det er klor i vannet.</b> Perfekt vann er ikke alltid så enkelt, mange faktorer, men kortversjonen basert på erfaring er:
+        <li>Når man er ferdig:
+            <ul>
+                <li>Tilsett 1 ts oppløst klor i vannet. (Bruk litermålet.)</li>
+            </ul>
         </li>
-        <li>
-            Det kan være lurt å sjekke klor-nivået i vannet, det bør være mellom 1,5 til 2,5+<br/>
-            Vi har både måle-strips og testaparat.<br/>
-            <li>Strips, har denne bruksanvisningen bak på boksen
-                <ul>
-                    <li>Hold strip'en under vann i 2 sekunder.</li>
-                    <li>Vent i 15 sekunder.</li>
-                    <li>Sammenlign fargen med fargekartet på boksen.</li>
-                    <li>Både klor og pH-nivå leses av samtidig her.</li>
-                </ul>
-                <img width="200" src="/g/pool-test-strip.png" alt="Pool test strip på toppen av sin boks." />
-            </li>
-            <li>Testapparat, gjør som følger:<br/>
-                Klor-nivå:
-                <ol>
-                    <li>Uten å bruke kraft, sjekk at hjulet er skrudd helt til høyre.</li>
-                    <li>Skru så hjulet rolig mot venstre til nålen er på bokstaven "C", som på bildet.
-                        <img width="200" src="/g/pool-clorine-testing-device.png" alt="Pool tester apparat, justert så nålen peker på 'C'" />
-                    </li>
-                    <li>Ikke mål rett i basenget hvis det er sirkulasjon i vannet, da måler den feil.</li>
-                    <li>Ta vann fra basenget i litermålet og mål der.</li>
-                    <li>Når pilen peker på C, sett målestengene ned i vannet, helt opp til den svarte plastikken.</li>
-                    <li>Vent til pilen har justert seg, det kan ta noen sekunder.</li>
-                    <li>Alt fra 1,5 til 2,5 er bra.</li>
-                    <li>Når du er ferdig, vri hjulet til høyre igjen, apparatet er "av" når hjulet er vridd til helt til høyre og nålen ligger helt til høyre.</li>
-                </ol>
-                pH-nivå: (bør være mellom 7,0 og 7,4)
-                <ol>
-                    <li>Skru hjulet helt til høyre og så enda mer til høyre slik at det sier "klikk", da spretter nålen opp og er klar til måling.</li>
-                    <li>Gjør som med klormålingen, ta vann i litermålet og mål der.</li>
-                    <li>Når du er ferdig, vri hjulet til høyre igjen, ut av "pH-modus", apparatet er "av" når hjulet er vridd til høyre i "klor-modus" / når nålen ligger helt til høyre.</li>
-                </ol>
-            </li>
-            <li>
-                Klor: For lite eller for mye?
-                <ul>
-                    <li>For lite, og det fortsatt er en tablett i flotøren?
-                        Har dere nettopp badet veldig lenge med mye bobler, da ville jeg ventet en times tid og målt på nytt.
-                        Hvis det fortsatt er for lavt, tilsett mer klor i form at pulver/granulat som løses opp i et litermål med vann før det helles i basenget.<br/>
-                        <img width="200" src="/g/pool-chemistry-clorine.png" alt="Klorpulver til å blandes ut i litermål." />
-                        Benytt 5ml klor av gangen, vann i litermålet først, rør rundt til nesten alt er oppløst.<br />
-                        Hell i basenget, gjerne rett foran inntaket til filterne og la boblene gå i 10+ minutter før du måler på nytt.
-                    </li>
-                    <li>Er det for mye, gi meg gjerne beskjed så kanskje jeg forstår hvorfor.<br/>
-                        Dette er nok ikke noe å bekymre seg for, men om det skulle skje:<br/>
-                        Fjern flotøren (med klor), fjern jacuzzi-lokket og start boblene.<br/>
-                        Klor forsvinner over tid og raskere ved eksponering med luft.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                pH-nivå: For høyt eller for lavt?<br/>
-                Du vil nok ikke oppleve at pH-nivået er for høyt siden pH reduseres med bruk.<br/>
-                Er pH for lav, tilsett "pH-pluss" som er et hvitt pulver som løses opp i vann.<br/>
-                Benytt 5ml ph-pluss av gangen, vann i litermålet først, rør rundt, det løses fort opp.<br/>
-                Hell i basenget, gjerne rett foran inntaket til filterne. Start boblene og vent i ca 20 minutter før du måler på nytt.<br/>
-                Gjenta prosessen til du er fornøyd.
-            </li>
+        <li>Etter ca. 3-4 bad (typisk annenhver dag + ):
+            <ul>
+                <li>Tilsett 1 liten ts "pH-pluss"-pulver rett i vannet.</li>
+            </ul>
+            P.S. Klor forsvinner over (kort) tid, så litt for mye er ikke så farlig, pH minkes derimot ikke av seg selv.
+            pH kan du enten måle eller kjenne, blir det litt mye nærmer det seg såpevann og
+            boblene sprekker ikke så lett og du får et slags skumbad (det er ikke farlig).<br/>
+            (og avfallet fra dere som bader legger seg på boblene og basengkanten istedenfor i filteret =) )<br/>
+            Er du usikker eller tror det er litt for mye, bruk en pH-strip og test vannet.
+        </li>
+        <li>Annen hver dag (gitt at man har badet begge dagene):
+            <ul>
+                <li>Hell i tillegg i 1 liten ts "Klar pool" rett i vannet. (Den skal forhinde biofilm i badet.)</li>
+            </ul>
+            Sånn, ferdig.<br/><br/>
+
+            Det er likevel litt mer å vite :-)
+        </li>       
+        <li>Kloret løses opp før det helles i vannet, vi bruker litermålet som står sammen med jacuzzi-tingene (nederst i den grå hyllen ved inngangsdøren).</li>
+        <li>Begynn med vann i litermålet, ta gjerne vann rett fra jacuzzi,
+            deretter pulver, rør rundt til mesteparten er løst opp.</li>
+        <li>Hell så klorvannet rundt langs kanten av badet eller nær inntaket til filterne (når pumpen kjører).</li>
+        <li>Skulle vannet være synlig redusert i kvalitet, benytt i stedet: 2 ts klor.<br/>
+            + vurder 1 ts “Klar pool” (tilsettes direkte i badet, ikke i klorløsningen).
+        </li>
+        <li>La alle de tre boblene kjøre i 8 min, gjerne/helst med lokket delvis på.<br/>
+            (Selv legger jeg lokket helt over men lar det hvile på litermålet slik at det kommer godt med luft inn/ut)
+            <br/><br/>
+        </li>
+        <li>P.S. Det finnes også "pH-strips" for å sjekke pH-verdien som bør ligge rundt 7,0.<br/>
+            <!-- (pH-verdien er viktig for at kloret skal virke optimalt og for å unngå hudirritasjoner).<br/> -->
+            Vi har aldri hatt behov for å justere ned pH-verdien, kun opp, derfor er bare "ph-pluss"-versjonen tilgjengelig.<br/>
+            Ønsker man å justere pH-verdien, så tar det litt tid i den forstand at vannet må blandes godt og det er viktig å ikke ta for mye "pluss" oppi av gangen.
+            Skalaen er ikke lineær og plutselig har man tatt for mye.<br/>
+            1 t-skje eller litt mindre er det vi pleier å bruke, ikke bruk mer enn det av gangen,
+            det kan tilsettes rett i basenget som pulver eller utblandet,
+            før vannet må blandes godt før man måler på nytt.<br/>
+            Tips: Første dag på hytta når et ev. bad er ferdig: Mål pH, er den under 7,0, tilsett 1 t-skje med "pluss" (direkte i badet) + klor (utvannet) som nevnt ovenfor, så er det blandet til neste morgen.
         </li>
     </ol>
 </li>

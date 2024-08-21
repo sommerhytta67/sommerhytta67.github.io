@@ -1,0 +1,103 @@
+body,html{
+    margin:0;
+    font-size: 12px
+}
+body{ max-width: 500px; }
+div, p, li, a, span{
+    font-size: 1.25rem;
+}
+p{
+    margin: 1rem 0;
+}
+p, h1, h2, h3, h4, h5, h6{
+    padding: 0 0.25rem 0 0.5rem;
+}
+button{
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+header{
+    position: absolute;
+}
+header.main{
+    background-image: url('/g/bg/67-from-jacuzzi.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    min-height: 200px;
+    margin:0 -1.75rem -0.8rem -1.75rem;
+    position: relative;
+}
+section {
+    position: relative;
+    height: 8.0em;
+    overflow: hidden;
+    bottom:0;
+    outline: 0px solid red;
+    margin-top:-1rem
+}
+
+section::after {
+    content: "";
+    position: absolute;
+    bottom: 0em;
+    left: 0;
+    width: 100%;
+    height: 8.0rem;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+    pointer-events: none;
+}
+section.expanded {
+    height: auto;
+    overflow: visible;
+}
+button.expanded span,
+button span.expanded,
+button.expanded object,
+button object.expanded,
+h2 object.expanded,
+h2.expanded object{
+    display: none;
+}
+button.expanded span.expanded,
+button.expanded object.expanded,
+h2.expanded object.expanded{
+    display: inline;
+}
+section.expanded::after {
+    display: none;
+}
+section{
+    margin-bottom: 4rem;
+}
+.section-footer button{
+    margin: 0 auto;
+}
+button, svg{
+    cursor: pointer;
+}
+h2{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+/* h2 button{
+    float: right
+} */
+button.section-toggle-bottom{
+    position: relative;
+    top: -1.25rem;
+    left: calc(50% - 2.5rem);
+}
+button.start-as-hidden{
+    display: none;
+}
+button.start-as-hidden.expanded{
+    display: flex;
+}
+.text{
+    color: inherit;
+}

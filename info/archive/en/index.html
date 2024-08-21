@@ -4,8 +4,134 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Cabin 67 at Nes Strandhager</title>
-    <link href="/css/main.css" media="all" rel="stylesheet" />
-    <script type="text/javascript" src="/js/main.js"></script>
+    <style type="text/css">
+        body,html{
+            margin:0;
+            font-size: 12px
+        }
+        body{ max-width: 500px; }
+        div, p, li, a, span{
+            font-size: 1.25rem;
+        }
+        p{
+            margin: 1rem 0;
+        }
+        p, h1, h2, h3, h4, h5, h6{
+            padding: 0 0.25rem 0 0.5rem;
+        }
+        button{
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+        header{
+            position: absolute;
+        }
+        header.main{
+            background-image: url('/g/bg/67-from-jacuzzi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 200px;
+            min-height: 200px;
+            margin:0 -1.75rem -0.8rem -1.75rem;
+            position: relative;
+        }
+        section {
+            position: relative;
+            height: 8.0em;
+            overflow: hidden;
+            bottom:0;
+            outline: 0px solid red;
+            margin-top:-1rem
+        }
+
+        section::after {
+            content: "";
+            position: absolute;
+            bottom: 0em;
+            left: 0;
+            width: 100%;
+            height: 8.0rem;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+            pointer-events: none;
+        }
+        section.expanded {
+            height: auto;
+            overflow: visible;
+        }
+        button.expanded span,
+        button span.expanded,
+        button.expanded object,
+        button object.expanded,
+        h2 object.expanded,
+        h2.expanded object{
+            display: none;
+        }
+        button.expanded span.expanded,
+        button.expanded object.expanded,
+        h2.expanded object.expanded{
+            display: inline;
+        }
+        section.expanded::after {
+            display: none;
+        }
+        section{
+            margin-bottom: 4rem;
+        }
+        .section-footer button{
+            margin: 0 auto;
+        }
+        button, svg{
+            cursor: pointer;
+        }
+        h2{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        /* h2 button{
+            float: right
+        } */
+        button.section-toggle-bottom{
+            position: relative;
+            top: -1.25rem;
+            left: calc(50% - 2.5rem);
+        }
+        button.start-as-hidden{
+            display: none;
+        }
+        button.start-as-hidden.expanded{
+            display: flex;
+        }
+    </style>
+    <script type="text/javascript">
+        function toggleSection(containerId, btn) {
+            
+            var container = document.getElementById(containerId);
+            //var button = container.querySelector('.show-more-btn');
+            
+            container.classList.toggle('expanded');
+            if(btn){
+                //btn.classList.toggle('expanded');
+                var btnBottom = document.getElementById('toggle-at-bottom-' + containerId);
+                if(btnBottom){
+                    btnBottom.classList.toggle('expanded');
+                }
+            }
+            var header = document.getElementById('header-' + containerId);
+            if(header){
+                header.scrollIntoView();
+            }
+        }
+        function showAll(){
+            document.querySelectorAll('section').forEach(function(section){
+                section.classList.add('expanded');
+            });
+            return false;
+        }
+    </script>
 </head>
 <body>
     <header class="main">
@@ -56,16 +182,16 @@
     <object data="/g/expand_all.svg" type="image/svg+xml"></object>
 </h2>
 <section id="playtime">
-<div>Check the box by the water tap, it's either unlocked or the code is 0607.</div>
+<div>Check the cushion box by the water tap, the code is 0607.</div>
 <ul>
     <li>Badminton</li>
-    <!-- <li>(Foot)ball</li> -->
+    <li>(Foot)ball</li>
     <li>Frisbee</li>
     <li>Target throwing with balls (Velcro balls and collapsible target are on the shelf in the bedroom with the sliding door)</li>
     <li>Beach toys</li>
     <li>Flying a kite</li>
     <li>There are some games on the shelf section behind the sofa.</li>
-    <!-- <li>Fishing (Fishing permit here: <a href="https://bit.ly/fiskines">https://bit.ly/fiskines</a>. Rod available.)</li> -->
+    <li>Fishing (Fishing permit here: <a href="https://bit.ly/fiskines">https://bit.ly/fiskines</a>. Rod available.)</li>
 </ul>
 <div class="section-footer">
     <button class="start-as-hidden" id="toggle-at-bottom-playtime" onclick="return toggleSection('playtime', this);">
@@ -86,17 +212,16 @@
         any splashes that occur, <b>thank you</b> for doing the same :-)</li>
     <li>The living room window and bedroom window facing the road are typically open on a summer night,
         but avoid this if rain is expected, as the rain can come inside.</li>
-    <!-- <li>Bedroom 1: Before bedtime, it can be a good idea to open the window and close the door to the room,
+    <li>Bedroom 1: Before bedtime, it can be a good idea to open the window and close the door to the room,
         so that the summer heat from the cabin does not warm up the room, which will cool down a bit in the meantime.</li>
     <li>Our boy usually sleeps in Bedroom 1 and has on the hottest days benefited from the portable fan
-        (on the shelf in Bedroom 2) which can be plugged into the power inside the technical cabinet on the wall.</li> -->
+        (on the shelf in Bedroom 2) which can be plugged into the power inside the technical cabinet on the wall.</li>
     <li>It is also possible to sleep at the loft, closest to the window there is naturally the most circulation.<br/>
         Take bedding from another bed.<br/>
         If, for example, the two people staying in Bedroom 1 each want their own bed / room and one person moves to the loft,
         then the bed in Bedroom 1 can be converted into a single bed.
-        Simply stack all the mattresses on top of each other,
-        push in the drawers and pretend you are in the fairy tale "the prince(ss) and the pea" :-)<br>
-        If this is done, the bed can just stay that way when you leave the cabin.
+        Simply stack all the mattresses on top of each other, push in the drawers and pretend you are in the fairy tale "the prince(ss) and the pea" :-)<br>
+        If this is done, the bed can just stay like that when you leave the cabin.
     </li>
     <li>User manual for the air conditioner <a href="/assets/manual-toshiba-signatur25.pdf" target="_blank">here</a>.<br/>
         Typical use is to set "Mode" to "A" for automatic cooling/heating based on the selected temperature,
@@ -119,20 +244,18 @@
 </h2>
 <section id="jacuzzi">
     <ul>
-        <li>It is crucial to the water quality for you to take a <strong>shower</strong> before entering the jacuzzi,
-            even if you "feel" clean.
-            <ul>
-                <li>Hair, sweat, makeup, soap residue, sunscreen, loose skin particles etc. are bad for the water and filters.</li>
-                <li>Thank you :-)</li>
-            </ul>
+        <li>It is crucial to the water quality for you all to <strong>shower</strong> before entering the jacuzzi.<br/>
+            Even if you "feel" clean, there are always loose skin particles and residues on the skin that are not good for the water and filters.</li>
+            <ul><li>Hair, sweat, makeup, soap residue, sunscreen, etc. are bad for the water and filters.</li></ul>+
+            <ul><li>We know, it's tempting to skip it, please don't :-)</li></ul>
         </li>
 
         <li>Bring a cloth. Upon arrival + occasionally, we usually bring a cloth (not the kitchen cloth),
             there should be one together with the other jacuzzi items, to wipe along the waterline where things typically settle.<br/>
-            Then the filters should catch it until next time.<br/><br/>
+            Then the filters should catch until next time.<br/><br/>
        </li>
 
-       <li>Rinse / wash your feet before getting into the water.</li>
+       <li>Rinse / wash your feet before getting in.</li>
         
         <li>The cover, we usually place standing at an angle on the side either from where the wind blows or as a privacy shield,
             most often it stands as in the picture.
@@ -146,13 +269,10 @@
             <ul><li>Each time you have saved and press "Tmp" again (after it stops blinking), it switches between increasing or decreasing the temperature.</li></ul>
             <br/>
         </li>
-        <li>When you are done:
+        <li>Put the cover on between each use.</li>
+        <li>
             <ul>
-                <li>Put the cover on between each use.</li>
-                <li>Depending on the wind, etc. there might be several small debris, use the pool rake to remove what you can.
-                    You can find the mesh net at the bottom shelf in the bedroom and the handle behind, next to the wall, see the picture.<br/>
-                    <img src="/g/pool-net-rake.png" width="200" alt="Shelf in bedroom showing the rake at lower shelf and handle behind the shelf." />
-                </li>
+                <li>Small flies etc. also like to bathe.</li>
             </ul>
         </li>
         <li><strong>Inside</strong>: Keep the wooden floor dry after bathing/showering, if you walk through the cabin wet, find old towels in the bathroom drawer which can be placed/used on the floor.
