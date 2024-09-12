@@ -3,6 +3,7 @@ body,html{
     font-size: 12px
 }
 body{ max-width: 500px; }
+a img{ border: 0}
 div, p, li, a, span{
     font-size: 1.25rem;
 }
