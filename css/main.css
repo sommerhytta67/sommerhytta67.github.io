@@ -55,6 +55,9 @@ section.expanded {
     height: auto;
     overflow: visible;
 }
+section.paragraph{
+    padding-left: 2rem;
+}
 button.expanded span,
 button span.expanded,
 button.expanded object,
