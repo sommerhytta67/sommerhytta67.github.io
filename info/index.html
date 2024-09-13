@@ -19,6 +19,44 @@
 <p>Her finner du diverse praktisk info.<br/>
 (Klikk på overskriftene for å se mer, eller <a href="#se-alt" onclick="return showAll();">vis alt med en gang</a>.)</p>
 
+<h2 class="section-title" data-section="indoors" onclick="return toggleSection('indoors', this);"></h2>
+    Inne i hytta
+    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
+</h2>
+<section id="indoors">
+<ol>
+    <li>Benytt varmepumpen til oppvarming.<br/>
+        Typisk bruk er å sette "Mode" til "A" for automatisk kjøling/varming basert på valgt temperatur,
+        samt "Fan" til enten "Auto" eller ønsket styrke, her kan "Stille" (ansiktet som viser "Hysj") være en god nattmodus.<br/>
+        (Vi pleier å slå den av om natten.)<br/>
+        <a href="/assets/manual-toshiba-signatur25.pdf" target="_blank">Varmepumpen sin brukermanual</a>.
+    </li>
+    <li>Kjøkkenet mangler "splash wall" bak vask og koketopp,
+        derfor har vi nå en løs glassplate ved koketoppen og er generelt nøye med å tørke av
+        sprut som kommer, <b>takk</b> for at dere gjør det samme :-)</li>
+    <li>Stuevinduet og soveromsvinduet ut mot veien står typisk åpne en sommernatt.<br/>
+        Steng disse to når det er ventet regn, det kan nemlig regne inn.</li>
+    <!-- <li>Soverom 1: Før leggetid kan det være lurt å åpne vinduet, samt lukke døren til rommet,
+        slik at sommervarmen fra hytta ikke varmer opp rommet som får kjølt seg litt ned i mellomtiden.</li>
+    <li>Gutten vår pleier å sove på Soverom 1 og har på de varmeste dagene nytt godt av den bærbare viften
+        (ligger på hyllen i Soverom 2) som kan kobles til strøm inne i det tekniske skapet på veggen.</li> -->
+    <li>Det er også mulig å sove på hemsen, nærmest vinduet er det naturlig mest sirkulasjon.<br/>
+        Ta med sengetøy fra en annen seng.<br/>
+        Hvis f.eks. de to som bor på Soverom 1 vil ha hver sin seng / sitt rom og den ene da flytter til hemsen,
+        så kan Soverom 1-sengen ev. gjøres om til enkeltseng,
+        bare legg alle madrassene oppå hverandre, dytt inn skuffene og lat som du er prins(essen) på erten :-)<br>
+        Hvis dette gjøres kan den bare stå slik når dere forlater hytta.
+    </li>
+</ol>
+<div class="section-footer">
+    <button class="start-as-hidden" id="toggle-at-bottom-indoors" onclick="return toggleSection('indoors', this);">
+        <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
+        <span class="expanded">Skjul innholdet</span>
+    </button>
+</div>
+
+</section>
+
 <h2 class="section-title" id="header-outdoorsarea" onclick="return toggleSection('outdoorsarea', this);">
     Uteområdet
     <object data="/g/expand_all.svg" type="image/svg+xml"></object>
@@ -75,43 +113,6 @@
 </div>
 </section>
 
-<h2 class="section-title" data-section="indoors" onclick="return toggleSection('indoors', this);">
-    Inne i hytta
-    <object data="/g/expand_all.svg" type="image/svg+xml"></object>
-</h2>
-<section id="indoors">
-<ol>
-    <li>Benytt varmepumpen til oppvarming.<br/>
-        Typisk bruk er å sette "Mode" til "A" for automatisk kjøling/varming basert på valgt temperatur,
-        samt "Fan" til enten "Auto" eller ønsket styrke, her kan "Stille" (ansiktet som viser "Hysj") være en god nattmodus.<br/>
-        (Vi pleier å slå den av om natten.)<br/>
-        <a href="/assets/manual-toshiba-signatur25.pdf" target="_blank">Varmepumpen sin brukermanual</a>.
-    </li>
-    <li>Kjøkkenet mangler "splash wall" bak vask og koketopp,
-        derfor har vi nå en løs glassplate ved koketoppen og er generelt nøye med å tørke av
-        sprut som kommer, <b>takk</b> for at dere gjør det samme :-)</li>
-    <li>Stuevinduet og soveromsvinduet ut mot veien står typisk åpne en sommernatt.<br/>
-        Steng disse to når det er ventet regn, det kan nemlig regne inn.</li>
-    <!-- <li>Soverom 1: Før leggetid kan det være lurt å åpne vinduet, samt lukke døren til rommet,
-        slik at sommervarmen fra hytta ikke varmer opp rommet som får kjølt seg litt ned i mellomtiden.</li>
-    <li>Gutten vår pleier å sove på Soverom 1 og har på de varmeste dagene nytt godt av den bærbare viften
-        (ligger på hyllen i Soverom 2) som kan kobles til strøm inne i det tekniske skapet på veggen.</li> -->
-    <li>Det er også mulig å sove på hemsen, nærmest vinduet er det naturlig mest sirkulasjon.<br/>
-        Ta med sengetøy fra en annen seng.<br/>
-        Hvis f.eks. de to som bor på Soverom 1 vil ha hver sin seng / sitt rom og den ene da flytter til hemsen,
-        så kan Soverom 1-sengen ev. gjøres om til enkeltseng,
-        bare legg alle madrassene oppå hverandre, dytt inn skuffene og lat som du er prins(essen) på erten :-)<br>
-        Hvis dette gjøres kan den bare stå slik når dere forlater hytta.
-    </li>
-</ol>
-<div class="section-footer">
-    <button class="start-as-hidden" id="toggle-at-bottom-indoors" onclick="return toggleSection('indoors', this);">
-        <object data="/g/collapse_all.svg" type="image/svg+xml" class="expanded"></object>
-        <span class="expanded">Skjul innholdet</span>
-    </button>
-</div>
-
-</section>
 
 <h2 class="section-title" id="header-jacuzzi"  onclick="return toggleSection('jacuzzi', this);">
     Bruk av Jacuzzi
