@@ -6,6 +6,14 @@
     <title>Hytte 67 i Nes Strandhager</title>
     <link href="/css/main.css" media="all" rel="stylesheet" />
     <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = function(event) {
+            if(document.location.hash === '#clorine') {
+                toggleSection('jacuzzi');
+                document.getElementById('jacuzzi').scrollIntoView();
+            }
+        };
+    </script>
 </head>
 <body>
     <header class="main">
