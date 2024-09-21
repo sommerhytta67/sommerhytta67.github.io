@@ -6,6 +6,16 @@
     <title>Cabin 67 at Nes Strandhager</title>
     <link href="/css/main.css" media="all" rel="stylesheet" />
     <script type="text/javascript" src="/js/main.js"></script>
+    <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script><script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.6.22-min.js.gz"></script>
+    <script type="text/javascript">
+        window.onload = function(event) {
+            if(document.location.hash === '#clorine') {
+                toggleSection('jacuzzi');
+                document.getElementById('clorine').scrollIntoView();
+            }
+            window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('f1475dd69bb6fe3375edf3d7a08a511f', {"autocapture":{"elementInteractions":true}});
+        };
+    </script>
 </head>
 <body>
     <header class="main">
